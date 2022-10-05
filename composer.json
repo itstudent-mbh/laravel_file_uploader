@@ -1,0 +1,21 @@
+{
+    "name": "mbhanife/upload-file",
+    "description": "Laravel Upload file package",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mbhanife\\UploadFile\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "mbhanife",
+            "email": "itstudent.mbh@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^9.0",
+        "illuminate/database": "^9.0"
+    },
+}
