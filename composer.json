@@ -3,11 +3,7 @@
     "description": "Laravel Upload file package",
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Mbhanife\\UploadFile\\": "src/"
-        }
-    },
+
     "authors": [
         {
             "name": "mbhanife",
@@ -16,6 +12,20 @@
     ],
     "require": {
         "illuminate/support": "^9.0",
-        "illuminate/database": "^9.0"
+        "illuminate/database": "^9.0",
+        "Illuminate/Routing": "^9.0",
+        "Illuminate/Validation": "^9.0"
     },
+    "autoload": {
+        "psr-4": {
+            "Mbhanife\\UploadFile\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mbhanife\\UploadFile\\providers\\UploadFileServiceProvider"
+            ]
+        }
+    }
 }

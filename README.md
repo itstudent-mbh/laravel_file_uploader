@@ -1,48 +1,53 @@
-# User-ACL-package
-User access Controller package for laravel
-
+# File_upload_Controller
+Laravel file upload controller package 
+Support zip/jpeg/mp4/pdf files
 
 # Install 
 ```bash
-composer require mbhanife/laravel-users-acl
+composer require mbhanife/Laravel_File_uploader
 ```
 
 ```bash
 php artisan migrate 
+php artisan storage:link
+```
+
+Add trait ' use UploadFile ' to user model  
+
+Create folder 'private' in storate/app directory
+
+Copy this to config/filesystems.php into discks array
+```bash
+    'private' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private')
+        ],
 ```
 
 # Use
-Add ' use HasRole ' to user model  
 
-Add new role 
-Just set name for that
+Upload file with uploader in controller 
+Request must has 'file' field and 'is_private' if it`s private file
 ```bash
-Role::create(['name' => 'role name']);
+    $uploader = new Uploader($request, new StorageManager());
+    $uploader->upload();
 ```
 
-Add new permission
+Get file absolute path
 ```bash
-Permission::create('name' => 'permission name')
+    $file = File::find(x);
+    $file->absolutePath();
 ```
 
-Attach permission to role 
+Download file
 ```bash
-$role = Role::find(x);
-$role->givePermissions(['permission name 1','permission name 2',...])
+    $file = File::find(x);
+    $file->download();
 ```
 
-
-Attach role to user
+Delete file
 ```bash
-$user = user::find(x);
-$user->giveRoles(['role name 1','role name 2',...])
+    $file = File::find(x);
+    $file->delete();
 ```
 
-
-
-Use permissions in controller 
-```bash
-if ($user->can('permission name')) {
-    do somethings
-}
-```
